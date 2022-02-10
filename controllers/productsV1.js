@@ -9,7 +9,7 @@ exports.getProducts = async (req, res) => {
 
     res.status(200).send(products);
   } catch (error) {
-    console.log(error.message);
+    res.status(500).send("internal server error");
   }
 };
 
@@ -23,7 +23,7 @@ exports.findProduct = async (req, res) => {
 
     res.status(200).send(product);
   } catch (error) {
-    console.log(error.message);
+    res.status(500).send("internal server error");
   }
 };
 
@@ -44,7 +44,7 @@ exports.storeProduct = async (req, res) => {
       product,
     });
   } catch (error) {
-    console.log(error.message);
+    res.status(500).send("internal server error");
   }
 };
 
