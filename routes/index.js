@@ -1,10 +1,8 @@
 const routes = require("express").Router();
-const controller = require("../controllers/products");
+const routeV1 = require("./productV1");
+const routeV2 = require("./productV2");
 
-routes.get("/", controller.getProducts);
-routes.post("/", controller.storeProduct);
-routes.get("/:id", controller.findProduct);
-routes.patch("/:id", controller.updateProduct);
-routes.delete("/:id", controller.deleteProduct);
+routes.use("/v1/products", routeV1);
+routes.use("/v2/products", routeV2);
 
 module.exports = routes;

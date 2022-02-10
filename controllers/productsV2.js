@@ -1,4 +1,4 @@
-const Products = require("../models/Products");
+const Products = require("../models/ProductsV2");
 
 exports.getProducts = async (req, res) => {
   try {
@@ -17,7 +17,7 @@ exports.findProduct = async (req, res) => {
     const product = await Products.findOne({ _id: id });
 
     if (!product) return res.status(404).send("not found");
-    console.log(product);
+
     res.status(200).send(product);
   } catch (error) {
     res.status(500).send("internal server error");
@@ -68,7 +68,7 @@ exports.deleteProduct = async (req, res) => {
 
   try {
     const product = await Products.findOne({ _id: id });
-    if (!product) res.status(404).send("not found");
+    if (!product) return res.status(404).send("not found");
 
     await Products.deleteOne({ _id: id });
 
