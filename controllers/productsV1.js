@@ -50,7 +50,6 @@ exports.storeProduct = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
   const { id } = req.params;
-  //   const { product_name, price, stock, status } = req.body;
 
   try {
     const product = await collection.findOne({ _id: ObjectId(id) });
